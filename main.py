@@ -67,6 +67,8 @@ def create_points(exp):
 SCREEN_RES = 600
 screen = pygame.display.set_mode((SCREEN_RES, SCREEN_RES+50))
 pygame.display.set_caption("Function Representation")
+icon = pygame.image.load("Function-Graphs\icon.png").convert_alpha()
+pygame.display.set_icon(icon)
 clock = pygame.time.Clock()
 FPS = 60
 
