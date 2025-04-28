@@ -1,10 +1,8 @@
 from sys import exit 
 import pygame 
 import math
-import colorama
 
 pygame.init()
-colorama.init()
 
     
 def catmull_rom(p0, p1, p2, p3, t):
@@ -43,10 +41,10 @@ def create_points(exp):
     points = []
     x = -50
     while x <= 50:
-        y = calc(exp, {"x": x})
+        y = calc(exp, {"x": x, "X": x})
         if y != None:
             y *= -1
-            points.append((x*2, y))
+            points.append((x, y))
         x += 1
 
     for i, point in enumerate(points):
@@ -74,8 +72,7 @@ FPS = 60
 
 SQUARE = 30
 
-exp = ""
-points = [create_points(exp)]
+points = []
 
 anim_index = 0
 
@@ -110,8 +107,7 @@ while running:
             if event.key == pygame.K_BACKSPACE:
                 text = text[:-1]
             elif event.key == pygame.K_RETURN:
-                exp = text
-                points = [create_points(exp)]
+                points = [create_points(text)]
                 anim_index = 0
             else:
                 text += event.unicode
@@ -125,7 +121,7 @@ while running:
             except IndexError as e: continue
 
         if anim_index < len(points_of):
-            anim_index += 1
+            anim_index += 2
 
     screen.blit(input, input_rect)
     pygame.display.flip()
