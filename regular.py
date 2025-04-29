@@ -109,6 +109,8 @@ while running:
             elif event.key == pygame.K_RETURN:
                 points = [create_points(text)]
                 anim_index = 0
+            elif event.key == pygame.K_ESCAPE:
+                running = False
             else:
                 text += event.unicode
 
